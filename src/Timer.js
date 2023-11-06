@@ -44,9 +44,8 @@ function Timer() {
     }
 
 
-    useEffect(() => {
-        
-        initTimer();
+    useEffect(() => {    
+    initTimer();
     
      const interval = setInterval(() => {
         if (isPausedRef.current) {
@@ -60,7 +59,7 @@ function Timer() {
         },1000);
 
         return () => clearInterval(interval);
-    }, [initTimer, switchMode]);
+    }, [settingsInfo]);
 
 
 
