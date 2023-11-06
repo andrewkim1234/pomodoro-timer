@@ -45,27 +45,22 @@ function Timer() {
 
 
     useEffect(() => {
-        const memoizedInitTimer = useCallback(() => {
-          initTimer();
-        }, [initTimer]);
-      
-        const memoizedSwitchMode = useCallback(() => {
-          switchMode();
-        }, [switchMode]);
-      
-        const interval = setInterval(() => {
-          if (isPausedRef.current) {
+        
+        initTimer();
+    
+     const interval = setInterval(() => {
+        if (isPausedRef.current) {
             return;
-          }
-          if (secondsLeftRef.current === 0) {
-            return memoizedSwitchMode();
-          }
-      
-          tick();
-        }, 1000);
-      
+        }
+        if (secondsLeftRef.current === 0) {
+            return switchMode();
+        }
+
+        tick();
+        },1000);
+
         return () => clearInterval(interval);
-      }, [initTimer, switchMode]);
+    }, [initTimer, switchMode]);
 
 
 
