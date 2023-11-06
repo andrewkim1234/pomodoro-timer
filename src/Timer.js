@@ -7,7 +7,6 @@ import { useContext, useState, useEffect, useRef} from 'react';
 import SettingsContext from './SettingsContext.js';
 
 
-const red = '#f54e4e';
 const blue = '#3d48db';
 const green = '#4aec8c';
 
@@ -46,6 +45,7 @@ function Timer() {
 
 
     useEffect(() => {
+        
         initTimer();
     
      const interval = setInterval(() => {
@@ -60,7 +60,8 @@ function Timer() {
         },1000);
 
         return () => clearInterval(interval);
-    }, [settingsInfo]);
+    }, [initTimer, switchMode]);
+
 
 
     const totalSeconds = mode === 'work' 
